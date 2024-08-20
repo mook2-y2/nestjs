@@ -1,4 +1,4 @@
-import { Controller, Get, Render } from '@nestjs/common';
+import { Controller, Get, Param, Query, Render } from '@nestjs/common';
 
 @Controller()
 export class AppController {
@@ -6,5 +6,11 @@ export class AppController {
   @Render('index')
   root() {
     return { message: 'Index Page' };
+  }
+
+  @Get('api')
+  api(@Query('text') text: string) {
+    console.log(text);
+    return { text };
   }
 }
